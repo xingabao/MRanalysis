@@ -60,7 +60,7 @@ ui.analysis.mr_mvmr_local <- function() {
       title = dashboardBrand(
         title = tags$img(src = '/XINGABAO/img/mr_logo.png', title = "MRanalysis", width = "300px"),
         color = NULL,
-        href = MR.HOME
+        href = '/'
       )
     ),
     sidebar = bs4DashSidebar(
