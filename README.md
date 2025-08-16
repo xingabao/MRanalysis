@@ -357,10 +357,8 @@ You can upload your own preprocessed data or use built-in API mode to select pub
 
   [https://mranalysis.cn/analysis/2SMR-api/](https://mranalysis.cn/analysis/2SMR-api/)
 
-  
-
   ```none
-  [![asciicast](https://mranalysis.cn/XINGABAO/intro/MAGMA.png)](https://mranalysis.cn/XINGABAO/intro/MAGMA.mp4)
+  [![Watch the demo video](https://mranalysis.cn/XINGABAO/intro/MAGMA.png)](https://mranalysis.cn/XINGABAO/intro/MAGMA.mp4)
   ```
 
 - Example datasets are available for practice and demonstration.
