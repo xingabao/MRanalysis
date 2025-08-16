@@ -74,7 +74,7 @@ COPY plugins/ /srv/shiny-server/plugins/
 COPY www/ /srv/shiny-server/www/
 COPY Contact.html index.html /srv/shiny-server/
 COPY Contact.html index.html /srv/shiny-server/
-RUN cp -r /usr/local/lib/R/site-library/MRanalysisBase/extdata /srv/shiny-server/XINGABAO
+RUN cp -r /usr/local/lib/R/site-library/MRanalysisBase/extdata /srv/shiny-server/XINGABAO && apt-get -y install libmysqlclient-dev
 
 EXPOSE 8001
 
