@@ -72,20 +72,31 @@ After logging back in, run Docker as a non-root user.
 
 After the installation of Docker of if you already have Docker environment, follow the steps below to install the MRanalysis docker image.
 
-1) Download the MRanalysis docker image package [MRanalyis.tar.gz]()
-2) Unzip `MRanalysis.tar.gz`, and this will create a directory MRanalysis which contains the docker image of the pipeline called MRanalysis.tar, and three Unix shell scripts: ..., ... and ....
-
 ```shell
-$ tar xzvf tellread.tar.gz 
+# Download the Docker image
+wget https://mranalysis.cn/mranalysis.tar
+
+# Load the downloaded Docker image
+docker load -i mranalysis.tar
 ```
 
+```shell
+# Or use docker pull command pull image from docker Hub directly
+docker pull xingabao/mranalysis:latest
+```
 
+### Run MRanalysis Container
 
-https://universalsequencing.com/pages/software
+Mount your reference data directory to the container. Ensure you have downloaded the required reference datasets (see [References](#References)).
 
 ```shell
-docker run -itd --rm -p 8001:8001 --name mranalysis -v /references:/references mranalysis:2.0.0
+docker run -itd --rm -p 8001:8001 --name mranalysis \
+ -v /path/to/your/references:/references \
+ -v /path/to/your/wkdir:/home/shiny \
+ xingabao/mranalysis:latest
 ```
+
+Access the platform at [http://127.0.0.1:8001](http://127.0.0.1:8001)
 
 ## Step-by-step manual installation
 
@@ -101,6 +112,23 @@ sudo apt-get install -y r-base r-base-dev
 ```
 
 For the latest R version, you may add the [CRAN repository](https://cran.r-project.org/bin/linux/ubuntu/) before installing. See the [official CRAN instructions](https://cran.r-project.org/bin/linux/ubuntu/) for details.
+
+### Set Up Shiny Server on Ubuntu 24.04
+
+```shell
+sudo apt-get install -y gdebi-core
+wget https://download3.rstudio.org/ubuntu-18.04/x86_64/shiny-server-1.5.20.1002-amd64.deb
+sudo gdebi shiny-server-1.5.20.1002-amd64.deb
+```
+
+```shell
+# Start, stop, or restart Shiny Server.
+sudo systemctl start shiny-server
+sudo systemctl stop shiny-server
+sudo systemctl restart shiny-server
+```
+
+See details in https://posit.co/download/shiny-server/
 
 ### Install System Dependencies
 
@@ -205,7 +233,7 @@ make install
 [PLINK ](https://www.cog-genomics.org/plink/) is a free, open-source whole genome association analysis toolset, designed to perform a range of basic, large-scale analyses in a computationally efficient manner.
 
 ```shell
-wget -O /tmp/plink_linux_x86_64.zip https://s3.amazonaws.com/plink1-assets/dev/plink_linux_x86_64.zip \
+wget -O /tmp/plink_linux_x86_64.zip https://s3.amazonaws.com/plink1-assets/dev/plink_linux_x86_64.zip
 mkdir -p /tools/plink
 unzip /tmp/plink_linux_x86_64.zip -d /tools/plink
 ```
@@ -213,7 +241,6 @@ unzip /tmp/plink_linux_x86_64.zip -d /tools/plink
 [MAGMA](https://cncr.nl/research/magma/): Generalized Gene-Set Analysis of GWAS Data
 
 ```shell
-# Replace with actual magma zip URL
 wget -O /tmp/magma_v1.10.zip https://vu.data.surfsara.nl/index.php/s/zkKbNeNOZAhFXZB/download 
 mkdir -p /tools/magma_v1.10
 unzip /tmp/magma_v1.10.zip -d /tools/magma_v1.10
@@ -222,6 +249,31 @@ unzip /tmp/magma_v1.10.zip -d /tools/magma_v1.10
 Most commands require root or sudo privileges.
 
 For additional configuration or troubleshooting, please refer to the documentation of each individual tool.
+
+### Install and Run MRanalysis
+
+```shell
+# 1. Change permissions for the Shiny Server directory
+chmod 777 /srv/shiny-server/
+
+# 2. Move into the Shiny Server web directory
+cd /srv/shiny-server/
+
+# 3. Clone the MRanalysis repository
+git clone https://github.com/xingabao/MRanalysis.git
+
+# 4. Move all contents (including .git) to /srv/shiny-server root
+mv MRanalysis/* .
+mv MRanalysis/.git .
+
+# 5. Copy required extdata files for MRanalysisBase
+cp -r /usr/local/lib/R/site-library/MRanalysisBase/extdata /srv/shiny-server/XINGABAO
+
+# 6. Restart Shiny Server to apply changes
+sudo systemctl restart shiny-server
+```
+
+Access the platform at [http://127.0.0.1:3838](http://127.0.0.1:3838)
 
 # References
 
