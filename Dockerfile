@@ -71,6 +71,7 @@ COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 COPY analysis/ /srv/shiny-server/analysis/
 COPY gallery/ /srv/shiny-server/gallery/
 COPY plugins/ /srv/shiny-server/plugins/
+COPY installation/ /srv/shiny-server/installation/
 COPY www/ /srv/shiny-server/www/
 COPY Contact.html index.html /srv/shiny-server/
 COPY Contact.html index.html /srv/shiny-server/
