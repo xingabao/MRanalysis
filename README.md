@@ -1,16 +1,6 @@
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J5S64KQ4ME"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-J5S64KQ4ME');
-</script>
-
-
+**[MRanalysis](https://mranalysis.cn/)** is an interactive R Shiny application designed for Mendelian randomization analysis.
 
 # MRanalysis
-
-**[MRanalysis](https://mranalysis.cn/)** is an interactive R Shiny application designed for Mendelian randomization analysis.
 
 **Mendelian randomization** (MR) has emerged as a powerful epidemiological method for inferring causal relationships between exposures and outcomes using **genome-wide association study** (GWAS) summary data. By leveraging instrumental variables (IVs), such as single nucleotide polymorphisms (SNPs), MR can revolutionize our understanding of disease etiology, inform public health strategies, and accelerate drug discovery.
 
