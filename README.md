@@ -312,3 +312,57 @@ After downloading and extracting the files, place them into the specified direct
 c. `/references/MAGMA/msigdb`. Molecular Signatures Database (MSigDB) gene sets. Used in MAGMA gene-set enrichment analyses. Download from the [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb) website.
 
 ![magma_references_msigdb](www/img/magma_references_msigdb.png)
+
+# How to use MRanalysis
+
+**MRanalysis** is an integrated online platform for Mendelian Randomization (MR) analysis and post-GWAS (Genome-Wide Association Study) workflows. It enables users -- especially those without programming experience -- to easily perform data preprocessing, various MR analyses, and rich result visualizations.
+
+![workflow](www/img/workflow.png)
+
+## Data Preprocessing
+
+- **Using your own data:**  
+  If you have GWAS summary statistics (CSV/TSV/VCF), it is recommended to preprocess the files using [GWASkit](https://github.com/Li-OmicsLab-MPU/GWASkit). GWASkit helps with tasks such as:
+  - Format conversion (CSV/TSV ↔ VCF)
+  - rs ID mapping (CHR:POS:REF:ALT ↔ rsID)
+  - Standardizing GWAS data for MRanalysis
+
+- **Using public datasets:**  
+  MRanalysis can directly access and import GWAS summary data from public resources like the IEU OpenGWAS database via API.
+
+## Quality Control (QC)
+
+Before analysis, use the platform's QC tools to ensure data quality:
+- **CheckSumStats:** Detect metadata errors and allele frequency inconsistencies.
+- **Q-Q Plot and Manhattan Plot:** Visualize P-value distributions and check for significant associations or anomalies.
+
+## MR Analysis
+
+MRanalysis supports several MR analysis modes:
+- **Univariable MR:** Standard exposure-outcome causal inference.
+- **Multivariable MR:** Analyze multiple exposures simultaneously.
+- **Mediation (Two-step) MR:** Assess mediation effects and indirect pathways.
+
+You can upload your own preprocessed data or use built-in API mode to select public GWAS datasets. All analysis steps are code-free and parameters are user-friendly.
+
+ ## Visualization and Results Interpretation
+
+- Multiple visualization options available (forest plot, DAG, bar/dot/circos plot, etc.) for intuitive result presentation.
+- SNP-to-gene mapping and GO/KEGG enrichment analysis are supported for functional interpretation.
+- The platform provides complete code for every analysis, enabling transparency and reproducibility.
+
+ ## Tutorials and Help
+
+- Each function comes with **vedio** tutorials for step-by-step guidance.
+
+  [https://mranalysis.cn/analysis/2SMR-api/](https://mranalysis.cn/analysis/2SMR-api/)
+
+  <video src="https://mranalysis.cn/XINGABAO/intro/MAGMA.mp4"></video>
+
+- Example datasets are available for practice and demonstration.
+
+##  Access
+
+- **Online platform:** [https://mranalysis.cn](https://mranalysis.cn)
+- **GWASkit tool & documentation:** [https://github.com/Li-OmicsLab-MPU/GWASkit](https://github.com/Li-OmicsLab-MPU/GWASkit)
+
