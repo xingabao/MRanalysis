@@ -735,7 +735,7 @@ server.ert <- function(input, output, session) {
         magma.bin = ifelse(test = Sys.info()['sysname'] == 'Linux', yes = glue('{magma.path}/magma'), no = glue('{magma.path}/magma.exe'))
         reference.path = glue('{references.path}/reference/{isolate(input[["gene_location"]])}/{isolate(input[["gene_location"]])}.gene.loc')
         system(glue('{magma.bin} --annotate --snp-loc {step.one.ifile()} --gene-loc {reference.path} --out {tempdir.()}/Step1'), intern = FALSE)
-        A = system(glue('{magma.bin} --annotate --snp-loc {magma.path}/.test/IVs.txt --gene-loc {references.path}/reference/NCBI37.3/NCBI37.3.gene.loc --out {magma.path}/.test/Step1'), intern = TRUE, ignore.stderr = TRUE)
+        A = system(glue('{magma.bin} --annotate --snp-loc {tempdir()}/IVs.txt --gene-loc {references.path}/reference/NCBI37.3/NCBI37.3.gene.loc --out {tempdir()}/Step1'), intern = TRUE, ignore.stderr = TRUE)
       })
       
       read.albert <- function(file) {

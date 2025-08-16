@@ -45,7 +45,7 @@ sudo apt-get remove docker docker-engine docker.io
 To install Docker on Ubuntu, in the terminal window enter the command:
 
 ```shell
-sudo apt install docker.io 
+sudo apt-get install docker.io 
 ```
 
 ### Step 4: Start and Automate Docker
