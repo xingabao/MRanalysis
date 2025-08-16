@@ -734,6 +734,7 @@ server.ert <- function(input, output, session) {
         references.path = ifelse(test = Sys.info()['sysname'] == 'Linux', yes = '/references/MAGMA', no = 'E:/references/MAGMA')
         magma.bin = ifelse(test = Sys.info()['sysname'] == 'Linux', yes = glue('{magma.path}/magma'), no = glue('{magma.path}/magma.exe'))
         reference.path = glue('{references.path}/reference/{isolate(input[["gene_location"]])}/{isolate(input[["gene_location"]])}.gene.loc')
+        print(glue('{magma.bin} --annotate --snp-loc {step.one.ifile()} --gene-loc {reference.path} --out {tempdir.()}/Step1'))
         system(glue('{magma.bin} --annotate --snp-loc {step.one.ifile()} --gene-loc {reference.path} --out {tempdir.()}/Step1'), intern = FALSE)
         # system(glue('{magma.bin} --annotate --snp-loc {tempdir.()}/IVs.txt --gene-loc {references.path}/reference/NCBI37.3/NCBI37.3.gene.loc --out {tempdir.()}/Step1'), intern = TRUE, ignore.stderr = TRUE)
       })

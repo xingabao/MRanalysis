@@ -4,7 +4,7 @@ MAINTAINER Abao Xing
 
 # Install system dependencies
 RUN apt-get update \
-	&& apt-get install -y cmake libxml2-dev libssl-dev libgmp-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev git bzip2 libgsl-dev libglpk-dev libigraph-dev gcc-9 g++-9 \
+	&& apt-get install -y cmake libxml2-dev libssl-dev libgmp-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev git bzip2 libgsl-dev libglpk-dev libigraph-dev libmysqlclient-dev gcc-9 g++-9 \
 	&& sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 \
 	&& sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 130 --slave /usr/bin/g++ g++ /usr/bin/g++-13
 
@@ -76,7 +76,7 @@ COPY installation/ /srv/shiny-server/installation/
 COPY www/ /srv/shiny-server/www/
 COPY Contact.html index.html /srv/shiny-server/
 COPY Contact.html index.html /srv/shiny-server/
-RUN cp -r /usr/local/lib/R/site-library/MRanalysisBase/extdata /srv/shiny-server/XINGABAO && apt-get -y install libmysqlclient-dev
+RUN cp -r /usr/local/lib/R/site-library/MRanalysisBase/extdata /srv/shiny-server/XINGABAO
 
 EXPOSE 8001
 
