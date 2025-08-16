@@ -497,8 +497,7 @@
 								<div class="code-block">
 									docker run -itd --rm -p 8001:8001 --name mranalysis \<br>
 									&nbsp;-v /path/to/your/references:/references \<br>
-									&nbsp;-v /path/to/your/references:/tools \<br>
-									&nbsp;-v /path/to/your/wkdir:/home/shiny \<br>
+									&nbsp;-v /path/to/your/.Renviron:/home/shiny/.Renviron \<br>
 									&nbsp;xingabao/mranalysis:latest</div>
 								<p style="margin-top: 10px; color: #666;">Access the platform at <a href="#"
 										style="color: #667eea;">http://127.0.0.1:8001</a>

@@ -92,7 +92,6 @@ Mount your reference data directory to the container. Ensure you have downloaded
 ```shell
 docker run -itd --rm -p 8001:8001 --name mranalysis \
  -v /path/to/your/references:/references \
- -v /path/to/your/tools:/tools \
  -v /path/to/your/.Renviron:/home/shiny/.Renviron \
  xingabao/mranalysis:latest
 ```
