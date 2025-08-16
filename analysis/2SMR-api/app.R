@@ -61,7 +61,7 @@ ui.analysis.mr_two_sample_api <- function() {
       title = bs4Dash::dashboardBrand(
         title = tags$img(src = '/XINGABAO/img/mr_logo.png', title = "MRanalysis", width = "300px"),
         color = NULL,
-        href = MRanalysisBase::MR.HOME
+        href = '/'
       )
     ),
     sidebar = bs4Dash::bs4DashSidebar(
@@ -357,7 +357,7 @@ server.analysis.mr_two_sample_api <- function(input, output, session) {
   if (Sys.getenv('XINGABAO') == 'ONLINE') shinyjs::hide('jwt_valid_until_output')
   
   # Set OPENGWAS_JWT
-  Sys.setenv(OPENGWAS_JWT = MRanalysisBase::OpenGWAS.token())
+  Sys.setenv(OPENGWAS_JWT = ifelse(MRanalysisBase::OpenGWAS.token() == '', yes = Sys.getenv('OPENGWAS_JWT'), MRanalysisBase::OpenGWAS.token()))
 
   shinyjs::hide('tab-siv-tip')
   shinyjs::hide('tab-siv-all')

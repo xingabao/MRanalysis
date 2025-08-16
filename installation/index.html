@@ -441,20 +441,23 @@
 
 						<div class="installation-steps">
 							<div class="step">
-								<div class="step-title">Update Software Repositories</div>
-								<p>Update the local database of software to ensure access to the latest revisions:</p>
+								<div class="step-title">Upload Software Repositories</div>
+								<p>As usual, it is a good idea to update the local database of software to make sure
+									you've got access to the latest revisions. Therefore, open a terminal window and
+									type::</p>
 								<div class="code-block">sudo apt-get update</div>
 							</div>
 
 							<div class="step">
 								<div class="step-title">Uninstall Old Versions of Docker</div>
-								<p>Remove any old Docker software before proceeding:</p>
+								<p>Next, it's recommended to uninstall any old Docker software before proceeding. Use
+									the command:</p>
 								<div class="code-block">sudo apt-get remove docker docker-engine docker.io</div>
 							</div>
 
 							<div class="step">
 								<div class="step-title">Install Docker</div>
-								<p>Install Docker on Ubuntu:</p>
+								<p>To install Docker on Ubuntu, in the terminal window enter the command:</p>
 								<div class="code-block">sudo apt install docker.io</div>
 								<p style="margin-top: 10px;">For other systems, visit <a
 										href="https://docs.docker.com/get-started/get-docker/" target="_blank"
@@ -463,35 +466,42 @@
 
 							<div class="step">
 								<div class="step-title">Start and Automate Docker</div>
-								<p>Set up Docker service to run at startup:</p>
+								<p>The Docker service needs to be set up to run at startup. To do this, type in each
+									command followed by enter:</p>
 								<div class="code-block">sudo systemctl start docker<br>sudo systemctl enable docker
 								</div>
 							</div>
 
 							<div class="step">
 								<div class="step-title">Running Docker as a non-root user</div>
-								<p>Create a Unix group called docker and add user to it:</p>
+								<p>If you don't want to preface the docker command with sudo, create a Unix group called
+									docker and add user to it::</p>
 								<div class="code-block">sudo groupadd docker<br>sudo usermod -aG docker $USER</div>
 							</div>
 
 							<div class="step">
-								<div class="step-title">Download or Pull MRanalysis Docker Image</div>
-								<p>Download the MRanalysis Docker image:</p>
+								<div class="step-title">Download or pull MRanalysis Docker Image</div>
+								<p>Download the MRanalysis Docker image package:</p>
 								<div class="code-block"># Download the Docker image<br>wget
 									https://mranalysis.cn/mranalysis.tar<br><br># Load the downloaded Docker
-									image<br>docker load -i mranalysis.tar</div>
-								<div class="code-block"># Or pull image from Docker Hub directly<br>docker pull
-									xingabao/mranalysis:latest</div>
+									image<br>docker
+									load -i mranalysis.tar<br></div>
+								<div class="code-block"># Or use docker pull command pull image from docker
+									Hub directly<br>docker pull xingabao/mranalysis:latest<br></div>
 							</div>
 
 							<div class="step">
 								<div class="step-title">Run MRanalysis Container</div>
-								<p>Mount your reference data directory and start the container:</p>
-								<div class="code-block">docker run -itd --rm -p 8001:8001 --name mranalysis \<br> -v
-									/path/to/your/references:/references \<br> -v /path/to/your/wkdir:/home/shiny \<br>
-									xingabao/mranalysis:latest</div>
-								<p style="margin-top: 10px; color: #666;">Access the platform at <a
-										href="http://127.0.0.1:8001" style="color: #667eea;">http://127.0.0.1:8001</a>
+								<p>Mount your reference data directory to the container. Ensure you have downloaded the
+									required reference datasets (see Reference Data tab).</p>
+								<div class="code-block">
+									docker run -itd --rm -p 8001:8001 --name mranalysis \<br>
+									&nbsp;-v /path/to/your/references:/references \<br>
+									&nbsp;-v /path/to/your/references:/references \<br>
+									&nbsp;-v /path/to/your/wkdir:/home/shiny \<br>
+									&nbsp;xingabao/mranalysis:latest</div>
+								<p style="margin-top: 10px; color: #666;">Access the platform at <a href="#"
+										style="color: #667eea;">http://127.0.0.1:8001</a>
 								</p>
 							</div>
 						</div>
@@ -507,7 +517,9 @@
 							<div class="step">
 								<div class="step-title">Install R Environment</div>
 								<p>Install R and development tools:</p>
-								<div class="code-block">sudo apt-get update<br>sudo apt-get install -y r-base r-base-dev
+								<div class="code-block">
+									sudo apt-get update<br>
+									sudo apt-get install -y r-base r-base-dev
 								</div>
 								<p style="margin-top: 10px;">For the latest R version, add the <a
 										href="https://cran.r-project.org/bin/linux/ubuntu/" target="_blank"
@@ -516,90 +528,144 @@
 
 							<div class="step">
 								<div class="step-title">Set Up Shiny Server on Ubuntu 24.04</div>
-								<div class="code-block">sudo apt-get install -y gdebi-core<br>wget
-									https://download3.rstudio.org/ubuntu-18.04/x86_64/shiny-server-1.5.20.1002-amd64.deb<br>sudo
-									gdebi shiny-server-1.5.20.1002-amd64.deb</div>
-								<div class="code-block"># Start, stop, or restart Shiny Server<br>sudo systemctl start
-									shiny-server<br>sudo systemctl stop shiny-server<br>sudo systemctl restart
-									shiny-server</div>
-								<p>See details at <a href="https://posit.co/download/shiny-server/" target="_blank"
+								<div class="code-block">
+									sudo apt-get install -y gdebi-core<br>
+									wget https://download3.rstudio.org/ubuntu-18.04/x86_64/shiny-server-1.5.20.1002-amd64.deb<br>
+									sudo gdebi shiny-server-1.5.20.1002-amd64.deb
+								</div>
+								<div class="code-block">
+									# Start, stop, or restart Shiny Server.<br> 
+									sudo systemctl start shiny-server<br>
+									sudo systemctl stop shiny-server<br>
+									sudo systemctl restart shiny-server
+								</div>
+								<p>See details in <a
+										href="https://posit.co/download/shiny-server/" target="_blank"
 										style="color: #667eea;">https://posit.co/download/shiny-server/</a></p>
 							</div>
 
 							<div class="step">
 								<div class="step-title">Install System Dependencies</div>
 								<p>Install required system libraries and compilers:</p>
-								<div class="code-block">sudo apt-get install -y \<br> cmake libxml2-dev libssl-dev
-									libgmp-dev libharfbuzz-dev \<br> libfribidi-dev libfreetype6-dev libpng-dev
-									libtiff5-dev libjpeg-dev \<br> git bzip2 libgsl-dev libglpk-dev libigraph-dev gcc-9
-									g++-9</div>
+								<div class="code-block">
+									sudo apt-get install -y \<br>
+									&nbsp;cmake libxml2-dev libssl-dev libgmp-dev libharfbuzz-dev \<br>
+									&nbsp;libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev \<br>
+									&nbsp;git bzip2 libgsl-dev libglpk-dev libigraph-dev gcc-9 g++-9
+								</div>
 							</div>
 
 							<div class="step">
 								<div class="step-title">Install R Packages</div>
 								<p>Install required CRAN and Bioconductor packages:</p>
-								<div class="code-block"># Install CRAN packages<br>Rscript -e 'install.packages(c(<br>
-									"purrr", "tibble", "reactable", "ggplot2", "ggthemes", "ggdag",<br> "ggpubr",
-									"ggtext", "venn", "shinymeta", "esquisse", "openxlsx",<br> "bs4Dash", "shinyalert",
-									"shinyjs", "stringr", "spsComps",<br> "colourpicker", "shinyvalidate", "shinyjqui",
-									"MendelianRandomization",<br> "DT", "devtools", "BiocManager", "coloc", "gdata",
-									"logger"<br>))'<br><br># Install Bioconductor packages<br>Rscript -e
-									'BiocManager::install(c(<br> "clusterProfiler", "org.Hs.eg.db",
-									"ComplexHeatmap",<br> "VariantAnnotation", "MungeSumstats"<br>), update = FALSE, ask
-									= FALSE)'</div>
+								<div class="code-block">
+									# Install CRAN packages<br>
+									Rscript -e 'install.packages(c(<br>
+									&nbsp;"purrr", "tibble", "reactable", "ggplot2", "ggthemes", "ggdag",<br>
+									&nbsp;"ggpubr", "ggtext", "venn", "shinymeta", "esquisse", "openxlsx",<br>
+									&nbsp;"bs4Dash", "shinyalert", "shinyjs", "stringr", "spsComps",<br>
+									&nbsp;"colourpicker", "shinyvalidate", "shinyjqui", "MendelianRandomization",<br>
+									&nbsp;"DT", "devtools", "BiocManager", "coloc", "gdata", "logger"<br>
+									&nbsp;))'
+
+									<br><br>
+									# Install Bioconductor packages<br>
+									Rscript -e 'BiocManager::install(c(<br>
+									&nbsp;"clusterProfiler", "org.Hs.eg.db", "ComplexHeatmap",<br>
+									&nbsp;"VariantAnnotation", "MungeSumstats"<br>
+									&nbsp;), update = FALSE, ask = FALSE)'
+								</div>
 							</div>
 
 							<div class="step">
 								<div class="step-title">Install GitHub Packages</div>
 								<p>Install specialized packages from GitHub repositories:</p>
-								<div class="code-block"># Install GitHub packages<br>Rscript -e
-									'devtools::install_github("MRCIEU/CheckSumStats")'<br>Rscript -e
-									'devtools::install_github("qingyuanzhao/mr.raps")'<br>Rscript -e
-									'devtools::install_github("mrcieu/gwasglue")'<br>Rscript -e
-									'devtools::install_github("WSpiller/MVMR", build_opts = c("--no-resave-data",
-									"--no-manual"), build_vignettes = FALSE)'<br>Rscript -e
-									'devtools::install_github("jrs95/geni.plots", build_vignettes = FALSE)'<br>Rscript
-									-e 'devtools::install_github("boxiangliu/locuscomparer")'<br>Rscript -e
-									'remotes::install_version("RcppEigen", version = "0.3.3.9.3")'<br>Rscript -e
-									'remotes::install_github("jrs95/hyprcoloc", build_vignettes = FALSE)'<br>Rscript -e
-									'remotes::install_github("xingabao/MRanalysisBase")'<br>Rscript -e
-									'remotes::install_github("xingabao/GWASkitR")'</div>
+								<div class="code-block">
+									# Install GitHub packages<br>
+									Rscript -e 'devtools::install_github("MRCIEU/CheckSumStats")'<br>
+									Rscript -e 'devtools::install_github("qingyuanzhao/mr.raps")'<br>
+									Rscript -e 'devtools::install_github("mrcieu/gwasglue")'<br>
+									Rscript -e 'devtools::install_github("WSpiller/MVMR", build_opts = c("--no-resave-data", "--no-manual"), build_vignettes = FALSE)'<br>
+									Rscript -e 'devtools::install_github("jrs95/geni.plots", build_vignettes = FALSE)'<br>
+									Rscript -e 'devtools::install_github("boxiangliu/locuscomparer")'<br>
+									Rscript -e 'remotes::install_version("RcppEigen", version = "0.3.3.9.3")'<br>
+									Rscript -e 'remotes::install_github("jrs95/hyprcoloc", build_vignettes = FALSE)'<br>
+									Rscript -e 'remotes::install_github("xingabao/MRanalysisBase")'<br>
+									Rscript -e 'remotes::install_github("xingabao/GWASkitR")'
+								</div>
 							</div>
 
 							<div class="step">
 								<div class="step-title">Install Third-Party Tools</div>
 								<p>Compile and install additional analysis tools:</p>
-								<div class="code-block"># Install PWCoCo<br>mkdir -p /tools<br>cd /tools<br>git clone
-									https://github.com/jwr-git/pwcoco.git<br>cd pwcoco<br>mkdir build && cd
-									build<br>cmake ..<br>make<br><br># Install CAVIAR<br>cd /tools<br>git clone
-									https://github.com/fhormoz/caviar.git<br>cd caviar/CAVIAR-C++<br>sudo
-									update-alternatives --set gcc /usr/bin/gcc-9<br>make<br><br># Install
-									bcftools<br>wget -O /tmp/bcftools-1.22.tar.bz2
-									https://github.com/samtools/bcftools/releases/download/1.22/bcftools-1.22.tar.bz2<br>tar
-									-xvjf /tmp/bcftools-1.22.tar.bz2 -C /tools<br>cd /tools/bcftools-1.22<br>./configure
-									--prefix=/tools/bcftools-1.22<br>sudo update-alternatives --set gcc
-									/usr/bin/gcc-13<br>make -j<br>make install<br><br># Install PLINK<br>wget -O
-									/tmp/plink_linux_x86_64.zip
-									https://s3.amazonaws.com/plink1-assets/dev/plink_linux_x86_64.zip<br>mkdir -p
-									/tools/plink<br>unzip /tmp/plink_linux_x86_64.zip -d /tools/plink<br><br># Install
-									MAGMA<br>wget -O /tmp/magma_v1.10.zip
-									https://vu.data.surfsara.nl/index.php/s/zkKbNeNOZAhFXZB/download<br>mkdir -p
-									/tools/magma_v1.10<br>unzip /tmp/magma_v1.10.zip -d /tools/magma_v1.10</div>
+								<div class="code-block">
+									# Install PWCoCo<br>
+									mkdir -p /tools<br>
+									cd /tools<br>
+									git clone https://github.com/jwr-git/pwcoco.git<br>
+									cd pwcoco<br>
+									mkdir build &amp;&amp; cd build<br>
+									cmake ..<br>
+									make
+									
+									<br><br>
+									# Install CAVIAR<br>
+									cd /tools<br>
+									git git clone https://github.com/fhormoz/caviar.git<br>
+									cd caviar/CAVIAR-C++<br>
+									sudo update-alternatives --set gcc /usr/bin/gcc-9<br>
+									make
+									
+									<br><br>
+									# Install bcftools<br>
+									wget -O /tmp/bcftools-1.22.tar.bz2 https://github.com/samtools/bcftools/releases/download/1.22/bcftools-1.22.tar.bz2<br>
+									tar -xvjf /tmp/bcftools-1.22.tar.bz2 -C /tools<br>
+									cd /tools/bcftools-1.22<br>
+									./configure --prefix=/tools/bcftools-1.22<br>
+									sudo update-alternatives --set gcc /usr/bin/gcc-13<br>
+									make -j<br>
+									make install
+									
+									<br><br>
+									# Install PLINK<br>
+									wget -O /tmp/plink_linux_x86_64.zip https://s3.amazonaws.com/plink1-assets/dev/plink_linux_x86_64.zip <br>
+									mkdir -p /tools/plink<br>
+									unzip /tmp/plink_linux_x86_64.zip -d /tools/plink
+									
+									<br><br>
+									# Install MAGMA<br>
+									wget -O /tmp/magma_v1.10.zip https://vu.data.surfsara.nl/index.php/s/zkKbNeNOZAhFXZB/download<br>
+									mkdir -p /tools/magma_v1.10<br>
+									unzip /tmp/magma_v1.10.zip -d /tools/magma_v1.10
+								</div>
+								<p>Most commands require root or sudo privileges.</p>
+								<p>For additional configuration or troubleshooting, please refer to the documentation of each individual tool.</p>
 							</div>
-
+							
 							<div class="step">
 								<div class="step-title">Install and Run MRanalysis</div>
-								<div class="code-block"># Change permissions for the Shiny Server directory<br>chmod 777
-									/srv/shiny-server/<br><br># Move into the Shiny Server web directory<br>cd
-									/srv/shiny-server/<br><br># Clone the MRanalysis repository<br>git clone
-									https://github.com/xingabao/MRanalysis.git<br><br># Move all contents to
-									/srv/shiny-server root<br>mv MRanalysis/* .<br>mv MRanalysis/.git .<br><br># Copy
-									required extdata files for MRanalysisBase<br>cp -r
-									/usr/local/lib/R/site-library/MRanalysisBase/extdata
-									/srv/shiny-server/XINGABAO<br><br># Restart Shiny Server to apply changes<br>sudo
-									systemctl restart shiny-server</div>
-								<p style="margin-top: 10px; color: #666;">Access the platform at <a
-										href="http://127.0.0.1:3838" style="color: #667eea;">http://127.0.0.1:3838</a>
+								<div class="code-block">
+									# 1. Change permissions for the Shiny Server directory<br>
+									chmod 777 /srv/shiny-server/<br>
+									<br>
+									# 2. Move into the Shiny Server web directory<br>
+									cd /srv/shiny-server/<br>
+									<br>
+									# 3. Clone the MRanalysis repository<br>
+									git clone https://github.com/xingabao/MRanalysis.git<br>
+									<br>
+									# 4. Move all contents (including .git) to /srv/shiny-server root<br>
+									mv MRanalysis/* .<br>
+									mv MRanalysis/.git .<br>
+									<br>
+									# 5. Copy required extdata files for MRanalysisBase<br>
+									cp -r /usr/local/lib/R/site-library/MRanalysisBase/extdata /srv/shiny-server/XINGABAO<br>
+									<br>
+									# 6. Restart Shiny Server to apply changes<br>
+									sudo systemctl restart shiny-server
+									</div>
+								<p style="margin-top: 10px; color: #666;">Access the platform at <a href="#"
+										style="color: #667eea;">http://127.0.0.1:8001</a>
 								</p>
 							</div>
 						</div>
@@ -674,13 +740,28 @@
 							<h4 style="color: #333; margin-bottom: 10px;">📁 Directory Structure</h4>
 							<p style="font-size: 14px; color: #666; margin-bottom: 10px;">Ensure your reference
 								directory is organized as follows:</p>
-							<div class="code-block">/references/<br>├── plink/<br>│ └── 1kg.v3/<br>│ ├── EUR.bed,
-								EUR.bim, EUR.fam<br>│ ├── AFR.bed, AFR.bim, AFR.fam<br>│ └── ... (other
-								populations)<br>└── MAGMA/<br> ├── bfile/<br> │ └── g1000_eur/<br> │ ├── g1000_afr/<br>
-								│ └── ... (other populations)<br> ├── reference/<br> │ └── NCBI37.3/<br> │ ├──
-								NCBI38/<br> │ ├── NCBI36.3/<br> │ └── dbsnp151.synonyms/<br> └── msigdb/<br> └──
-								c2.all.v2023.2.Hs.entrez.gmt<br> ├── msigdb.v2024.1.Hs.entrez.gmt<br> └── ... (other
-								msigdb references)</div>
+							<div class="code-block">
+								/references/<br>
+								├── plink/<br>
+								&nbsp;&nbsp;└── 1kg.v3/<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;├── EUR.bed, EUR.bim, EUR.fam<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;├── AFR.bed, AFR.bim, AFR.fam<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;└── ... (other populations)<br>
+								└── MAGMA/<br>
+								&nbsp;&nbsp;├── bfile/<br>
+								&nbsp;&nbsp;│&nbsp;&nbsp;└── g1000_eur/<br>
+								&nbsp;&nbsp;│&nbsp;&nbsp;├── g1000_afr/<br>
+								&nbsp;&nbsp;│&nbsp;&nbsp;└── ... (other populations)<br>
+								&nbsp;&nbsp;├── reference/<br>
+								&nbsp;&nbsp;│&nbsp;&nbsp;└── NCBI37.3/<br>
+								&nbsp;&nbsp;│&nbsp;&nbsp;├── NCBI38/<br>
+								&nbsp;&nbsp;│&nbsp;&nbsp;├── NCBI36.3/<br>
+								&nbsp;&nbsp;│&nbsp;&nbsp;└── dbsnp151.synonyms/<br>
+								&nbsp;&nbsp;└── msigdb/<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;└── c2.all.v2023.2.Hs.entrez.gmt<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;├── msigdb.v2024.1.Hs.entrez.gmt<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;└── ... (other msigdb references)<br>
+							</div>
 						</div>
 					</div>
 				</div>
