@@ -60,7 +60,8 @@ RUN wget -O /tmp/plink_linux_x86_64.zip https://s3.amazonaws.com/plink1-assets/d
 # Install magma
 RUN wget -O /tmp/magma_v1.10.zip https://vu.data.surfsara.nl/index.php/s/zkKbNeNOZAhFXZB/download \
 	&& mkdir -p /tools/magma_v1.10 \
-	&& unzip /tmp/magma_v1.10.zip -d /tools/magma_v1.10
+	&& unzip /tmp/magma_v1.10.zip -d /tools/magma_v1.10 \
+	&& chmod 777 /tools/magma_v1.10/magma
 
 
 # 中间文件删除
