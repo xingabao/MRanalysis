@@ -1,0 +1,244 @@
+/* CSS styles used in the shiny app introduction */
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+	font-family: #222222;
+	color: #222222;
+}
+
+a {
+	color: #008374;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #00b6a1;
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: #222222;
+}
+
+/*--------------------------------------------------------------
+# Sections & Section Header
+--------------------------------------------------------------*/
+section {
+	padding: 0px 0;
+	overflow: hidden;
+	scroll-margin-top: 70px;
+	overflow: clip;
+}
+
+.sections-bg {
+	background-color: #f6f6f6;
+}
+
+.section-header {
+	text-align: center;
+	padding-bottom: 60px;
+}
+
+.section-header h2 {
+	font-size: 32px;
+	font-weight: 600;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.section-header h2:after {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 3px;
+	background: #008374;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.section-header p {
+	margin-bottom: 0;
+	color: #6f6f6f;
+}
+
+/*--------------------------------------------------------------
+# About Us Section
+--------------------------------------------------------------*/
+.about h3 {
+	font-weight: 700;
+	font-size: 28px;
+	margin-bottom: 20px;
+	font-family: "Poppins", sans-serif;
+}
+
+.about .call-us {
+	left: 10%;
+	right: 10%;
+	bottom: 0;
+	background-color: #fff;
+	box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.08);
+	padding: 20px;
+	text-align: center;
+}
+
+.about .call-us h4 {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+
+.about .call-us p {
+	font-size: 28px;
+	font-weight: 700;
+	color: #008374;
+}
+
+.about .content ul {
+	list-style: none;
+	padding: 0;
+}
+
+.about .content ul li {
+	padding: 0 0 10px 30px;
+	position: relative;
+}
+
+.about .content ul i {
+	position: absolute;
+	font-size: 20px;
+	left: 0;
+	top: -3px;
+	color: #008374;
+}
+
+.about .content p:last-child {
+	margin-bottom: 0;
+}
+
+.about .play-btn {
+	width: 94px;
+	height: 94px;
+	background: radial-gradient(#008374 50%, rgba(0, 131, 116, 0.4) 52%);
+	border-radius: 50%;
+	display: block;
+	position: absolute;
+	left: calc(50% - 47px);
+	top: calc(50% - 47px);
+	overflow: hidden;
+}
+
+.about .play-btn:before {
+	content: "";
+	position: absolute;
+	width: 120px;
+	height: 120px;
+	animation-delay: 0s;
+	animation: pulsate-btn 2s;
+	animation-direction: forwards;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps;
+	opacity: 1;
+	border-radius: 50%;
+	border: 5px solid rgba(0, 131, 116, 0.7);
+	top: -15%;
+	left: -15%;
+	background: rgba(198, 16, 0, 0);
+}
+
+.about .play-btn:after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-40%) translateY(-50%);
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 15px solid #fff;
+	z-index: 100;
+	transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.about .play-btn:hover:before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-40%) translateY(-50%);
+	width: 0;
+	height: 0;
+	border: none;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 15px solid #fff;
+	z-index: 200;
+	animation: none;
+	border-radius: 0;
+}
+
+.about .play-btn:hover:after {
+	border-left: 15px solid #008374;
+	transform: scale(20);
+}
+
+@keyframes pulsate-btn {
+	0% {
+		transform: scale(0.6, 0.6);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(1, 1);
+		opacity: 0;
+	}
+}
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+	--bs-gutter-x: 1.5rem;
+	--bs-gutter-y: 0;
+	width: 100%;
+	padding-left: calc(var(--bs-gutter-x) * 0.5);
+	padding-right: calc(var(--bs-gutter-x) * 0.5);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.g-4,
+.gy-4 {
+	--bs-gutter-y: 1.5rem;
+}
+
+.fst-italic {
+	font-style: italic !important;
+}
+
+.albert-div {
+	background-color: #0d6efd;
+	border-radius: 5px;
+	color: white;
+	height: 40px;
+	width: 280px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 25px;
+	margin-bottom: 15px;
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>Contact Us Page</title>
+		<meta content="" name="description">
+		<meta content="" name="keywords">
+
+		<!-- Favicons -->
+		<link href="www/img/favicon.ico" rel="icon">
+		<link href="www/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com" rel="preconnect">
+		<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet">
+
+		<!-- Vendor CSS Files -->
+		<link href="www/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="www/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+		<link href="www/vendor/aos/aos.css" rel="stylesheet">
+		<link href="www/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+		<link href="www/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+		<!-- Main CSS File -->
+		<link href="www/css/main.css" rel="stylesheet">
+
+		<!-- =======================================================
+  * Template Name: Vesperr
+  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
+  * Updated: Jun 29 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+	</head>
+
+	<body class="starter-page-page">
+
+		<header id="header" class="header d-flex align-items-center sticky-top">
+			<div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+				<a class="logo d-flex align-items-center me-auto">
+					<img src="www/img/mr_logo.png">
+				</a>
+
+				<nav id="navmenu" class="navmenu">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li class="dropdown"><a href="#"><span>Mendelian Randomization</span> <i
+									class="bi bi-chevron-down toggle-dropdown"></i></a>
+							<ul>
+								<li><a href="analysis/2SMR-api/" target="_blank">Two-Sample Mendelian
+										Randomization (API)</a></li>
+								<li><a href="analysis/MVMR-api/" target="_blank">Multivariable Mendelian
+										Randomization (API)</a></li>
+								<li><a href="analysis/MMR-api/" target="_blank">Mediation Mendelian
+										Randomization (API)</a></li>
+								<li><a href="analysis/2SMR-local/" target="_blank">Two-Sample Mendelian
+										Randomization (Local)</a></li>
+								<li><a href="analysis/MVMR-local/" target="_blank">Multivariable Mendelian
+										Randomization (Local)</a></li>
+								<li><a href="analysis/MMR-local/" target="_blank">Mediation Mendelian
+										Randomization (Local)</a></li>
+							</ul>
+						</li>
+						<li class="dropdown"><a href="#"><span>Plugins</span> <i
+									class="bi bi-chevron-down toggle-dropdown"></i></a>
+							<ul>
+								<li><a href="plugins/OpenGWAS-JWT-update/" target="_blank">OpenGWAS-JWT-update</a></li>
+								<li><a href="plugins/COLOC/" target="_blank">Colocalization Analysis </a></li>
+								<li><a href="plugins/FORMAT/" target="_blank">GWAS Format</a></li>
+								<li><a href="plugins/CheckSumStats/" target="_blank">Check SumStats</a></li>
+								<li><a href="plugins/PowerCalculator/" target="_blank">Power Calculator</a></li>
+								<li><a href="plugins/SampleSizeCalculator/" target="_blank">Sample Size
+										Calculator</a></li>
+								<li><a href="plugins/MAGMA/" target="_blank">SNP Gene Mapping and Enrichment</a>
+								</li>
+								<li><a href="plugins/GO/" target="_blank">GO Enrichment Analysis</a>
+								</li>
+								<li><a href="plugins/KEGG/" target="_blank">KEGG Enrichment Analysis</a>
+								</li>
+								<li><a href="plugins/UEA/" target="_blank">Universal Enrichment Analysis</a>
+								</li>
+								<li><a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank">GWAS Data Format
+										Standardization</a></li>
+								<li><a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank">RS ID
+										Conversion</a></li>
+								<li><a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank">VCF to TSV</a></li>
+							</ul>
+						</li>
+						<li class="dropdown"><a href="#"><span>Data Visualization</span> <i
+									class="bi bi-chevron-down toggle-dropdown"></i></a>
+							<ul>
+								<li><a href="gallery/forest/" target="_blank">Forest Plot</a></li>
+								<li><a href="gallery/forest-mvmr/" target="_blank">Forest Plot (MVMR)</a></li>
+								<li><a href="gallery/dag-mmr/" target="_blank">Dag Plot (MMR)</a></li>
+								<li><a href="gallery/manhattan/" target="_blank">Manhattan Plot</a></li>
+								<li><a href="gallery/qq/" target="_blank">Q-Q Plot</a></li>
+								<li><a href="gallery/pie-chart/" target="_blank">Pie Chart</a></li>
+								<li><a href="gallery/venn-diagram/" target="_blank">Venn diagram</a></li>
+								<li><a href="gallery/go-circos-plot/" target="_blank">Circos Plot (GO)</a></li>
+								<li><a href="gallery/go-dot-plot/" target="_blank">Dot Plot (GO)</a></li>
+								<li><a href="gallery/go-bar-plot/" target="_blank">Bar Plot (GO)</a></li>
+								<li><a href="gallery/go-bar-plot2/" target="_blank">Bar Plot2 (GO)</a></li>
+								<li><a href="gallery/kegg-circos-plot/" target="_blank">Circos Plot (KEGG)</a></li>
+								<li><a href="gallery/kegg-bar-plot-hierarchy/" target="_blank">Bar Plot (KEGG)</a></li>
+								<li><a href="gallery/kegg-bar-plot2-hierarchy/" target="_blank">Bar Plot2 (KEGG)</a></li>
+							</ul>
+						</li>
+						<li><a href="Contact.html" target="_blank">Contact Us</a></li>
+					</ul>
+					<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+				</nav>
+			</div>
+		</header>
+
+		<main class="main">
+
+			<!-- Page Title -->
+			<div class="page-title" data-aos="fade">
+				<div class="container">
+					<nav class="breadcrumbs">
+						<ol>
+							<li><a href="index.html">Home</a></li>
+							<li class="current">Contact Us Page</li>
+						</ol>
+					</nav>
+					<h1>Contact Us</h1>
+				</div>
+			</div><!-- End Page Title -->
+
+			<!-- Starter Section Section -->
+			<section id="starter-section" class="starter-section section">
+
+				<!-- Section Title -->
+				<div class="container section-title" data-aos="fade-up">
+					<h2>Research Team</h2>
+				</div><!-- End Section Title -->
+
+				<div class="container teamintro" data-aos="fade-up">
+					<p>Centre for Artificial Intelligence Driven Drug Discovery</p>
+					<p>Li-OmincsLab</p>
+					<p>Macao Polytechnic University</p>
+					<p>Rua de Luís Gonzaga Gomes, Macau, China</p>
+					<p><a href="mailto:kefengl@mpu.edu.mo">Professor <strong>Kefeng Li</strong></a>,&nbsp; <strong>Abao Xing</strong>,&nbsp; <strong>Tiantian
+						Cai</strong>,&nbsp; <strong>Zhifan Li</strong></p>
+				</div>
+
+			</section><!-- /Starter Section Section -->
+
+			<section id="update-history" class="update-history section light-background">
+
+				<!-- Section Title -->
+				<div class="container section-title" data-aos="fade-up">
+					<h2>Update history</h2>
+				</div><!-- End Section Title -->
+				<div class="container updatecontent">
+					<div class="upinfo" data-aos="fade-up">
+						<div class="upinfo-item">
+							<h4>Start Development</h4>
+							<h5>2023.07.07</h5>
+							<p>We are excited to announce the commencement of development for our Mendelian
+								Randomization website. This online platform aims to provide researchers and scientists
+								with a powerful tool for exploring causal relationships in genetic epidemiology. As we
+								begin this journey, our focus is on creating a user-friendly interface that will make
+								complex Mendelian Randomization analyses more accessible to the scientific community.
+							</p>
+						</div><!-- Edn Resume Item -->
+					</div>
+					<div class="upinfo" data-aos="fade-up">
+						<div class="upinfo-item">
+							<h4>Analysis Module</h4>
+							<h5>2023.12.25</h5>
+							<p>Complete the development of the Mendelian analysis module.</p>
+						</div><!-- Edn Resume Item -->
+					</div>
+					<div class="upinfo" data-aos="fade-up">
+						<div class="upinfo-item">
+							<h4>Add plugin</h4>
+							<h5>2024.02.22</h5>
+							<p>Complete the development of the plugin module.</p>
+						</div><!-- Edn Resume Item -->
+					</div>
+					<div class="upinfo" data-aos="fade-up">
+						<div class="upinfo-item">
+							<h4>Add plugin</h4>
+							<h5>2024.04.05</h5>
+							<p>Developed a local plugin tool (GWASkit) for large files.</p>
+						</div><!-- Edn Resume Item -->
+					</div>
+					<div class="upinfo" data-aos="fade-up">
+						<div class="upinfo-item">
+							<h4>Add module</h4>
+							<h5>2024.06.12</h5>
+							<p>Add a data visualization module.</p>
+						</div><!-- Edn Resume Item -->
+					</div>
+					<div class="upinfo" data-aos="fade-up">
+						<div class="upinfo-item">
+							<h4>Update styles</h4>
+							<h5>2024.07.26</h5>
+							<p>Major update to the website's styles.</p>
+						</div><!-- Edn Resume Item -->
+					</div>
+				</div>
+			</section><!-- /Starter Section Section -->
+		</main>
+
+		<footer id="footer" class="footer">
+			<div class="footer-links d-flex flex-row">
+				<div class="col-lg-4 links-content">
+					<a href="https://github.com/Li-OmicsLab-MPU">
+						<p>Li-OmincsLab GitHub</p>
+					</a>
+					<a href="https://www.mpu.edu.mo/esca/en/aidd.php">
+						<p>Centre for Artificial Intelligence Driven Drug Discovery (AIDD)</p>
+					</a>
+					<a href="https://www.mpu.edu.mo/en/index.php">
+						<p>Macao Polytechnic University (MPU)</p>
+					</a>
+				</div>
+				<div class="col-lg-4 links-content">
+					<a href="https://pheweb.jp/">
+						<p>Pheweb</p>
+					</a>
+					<a href="https://www.ebi.ac.uk/gwas/">
+						<p>Gwas Catalog</p>
+					</a>
+					<a href="https://gwas.mrcieu.ac.uk/">
+						<p>IEU OpenGWAS project</p>
+					</a>
+					<a href="https://www.finngen.fi/en">
+						<p>FinnGen: an expedition into genomics and medicine</p>
+					</a>
+				</div>
+				<div class="col-lg-4 links-wechat d-flex flex-column justify-content-center">
+					<img src="www/img/wechat.jpg">
+					<p>Welcome to Focus on Our Lab News</p>
+				</div>
+			</div>
+			<div class="container">
+				<div class="copyright text-center">
+					<p>© <span>Copyright</span> <strong class="px-1 sitename">2023-2025</strong> <span>All Rights
+							Reserved</span></p>
+				</div>
+				<div class="credits">
+					<!-- All the links in the footer should remain intact. -->
+					<!-- You can delete the links only if you've purchased the pro version. -->
+					<!-- Licensing information: https://bootstrapmade.com/license/ -->
+					<!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+					Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+				</div>
+				<div class="credits">
+					<a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备19092212号</a>
+				</div>
+			</div>
+
+		</footer>
+
+		<!-- Scroll Top -->
+		<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+				class="bi bi-arrow-up-short"></i></a>
+
+		<!-- Preloader -->
+		<div id="preloader" class="easyintro hidden-content form-control"></div>
+
+		<!-- Vendor JS Files -->
+		<script src="www/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="www/vendor/php-email-form/validate.js"></script>
+		<script src="www/vendor/aos/aos.js"></script>
+		<script src="www/vendor/glightbox/js/glightbox.min.js"></script>
+		<script src="www/vendor/purecounter/purecounter_vanilla.js"></script>
+		<script src="www/vendor/swiper/swiper-bundle.min.js"></script>
+		<script src="www/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+		<script src="www/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+		<!-- Main JS File -->
+		<script src="www/js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<!-- Baidu tag (hm.js) -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?5b3d8cf0e6ebd9194c1ad25d9448e7ec";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>MRanalysis</title>
+		<meta content="" name="description">
+		<meta content="" name="keywords">
+
+		<!-- Favicons -->
+		<link href="www/img/favicon.ico" rel="icon">
+
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com" rel="preconnect">
+		<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet">
+
+		<!-- Vendor CSS Files -->
+		<link href="www/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="www/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+		<link href="www/vendor/aos/aos.css" rel="stylesheet">
+		<link href="www/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+		<link href="www/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+		<link href="www/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+		<!-- Main CSS File -->
+		<link href="www/css/main.css" rel="stylesheet">
+		<style>
+			.quick-p {
+				text-align: left !important;
+				margin-top: 12px !important;
+				margin-left: 12px !important;
+				margin-right: 12px !important;
+			}
+
+			.changelog-list {
+				list-style: none;
+				padding: 0;
+				max-height: 450px;
+				/* Reduced height to ensure scrollbar appears after 5 entries */
+				overflow-y: auto;
+				/* Vertical scrollbar when content overflows */
+				display: none;
+				/* Hidden by default */
+			}
+
+			.changelog-list.active {
+				display: block;
+				/* Show when active */
+			}
+
+			.changelog-list li {
+				margin-bottom: 20px;
+			}
+
+			.changelog-list h4 {
+				font-size: 1.25rem;
+				margin-bottom: 5px;
+				color: #333;
+			}
+
+			.changelog-list p {
+				margin: 0;
+				font-size: 1rem;
+				color: #666;
+			}
+
+			.changelog-toggle {
+				cursor: pointer;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.changelog-toggle i {
+				transition: transform 0.3s ease;
+			}
+
+			.changelog-toggle.active i {
+				transform: rotate(180deg);
+				/* Rotate arrow when active */
+			}
+
+			// LOG 
+			.changelog-container {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+				padding: 40px;
+				border-radius: 15px;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				margin: 20px auto;
+				max-width: 1200px;
+			}
+
+			.changelog-title {
+				text-align: center;
+				color: #2c3e50;
+				margin-bottom: 40px;
+				font-size: 2.5rem;
+				font-weight: 700;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			.changelog-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.version-major {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				margin-bottom: 30px;
+				border-radius: 12px;
+				padding: 25px;
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+				border-left: 5px solid #3498db;
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			.version-major:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+			}
+
+			.version-minor {
+				margin-bottom: 20px;
+				border-radius: 12px;
+				padding: 20px;
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+				transition: transform 0.3s ease;
+			}
+
+			.version-minor:hover {
+				transform: translateY(-3px);
+			}
+
+			.version-title {
+				margin-bottom: 15px;
+				font-size: 1.2rem;
+				font-weight: 600;
+				display: flex;
+				align-items: center;
+			}
+
+			.version-title-major {
+				color: #fff;
+				margin-bottom: 20px;
+				font-size: 1.4rem;
+				font-weight: 600;
+				display: flex;
+				align-items: center;
+			}
+
+			.version-icon {
+				margin-right: 10px;
+			}
+
+			.feature-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.feature-item {
+				background: rgba(255, 255, 255, 0.95);
+				margin-bottom: 12px;
+				padding: 15px;
+				border-radius: 8px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+				transition: all 0.3s ease;
+			}
+
+			.feature-item:hover {
+				transform: translateX(5px);
+			}
+
+			.version-text {
+				color: #2c3e50;
+				margin: 0;
+				line-height: 1.6;
+			}
+
+			/* 不同版本的背景色 */
+			.bg-orange {
+				background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+				border-left: 5px solid #f39c12;
+			}
+
+			.bg-teal {
+				background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+				border-left: 5px solid #1abc9c;
+			}
+
+			.bg-purple {
+				background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+				border-left: 5px solid #8e44ad;
+			}
+
+			.bg-pink {
+				background: linear-gradient(135deg, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+				border-left: 5px solid #e74c3c;
+			}
+
+			.bg-yellow {
+				background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+				border-left: 5px solid #27ae60;
+			}
+
+			.bg-blue {
+				background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+				border-left: 5px solid #3498db;
+			}
+
+			.bg-peach {
+				background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
+				border-left: 5px solid #e67e22;
+			}
+
+			.bg-light-blue {
+				background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+				border-left: 5px solid #5dade2;
+			}
+
+			.bg-gradient-pink {
+				background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+				border-left: 5px solid #e91e63;
+			}
+
+			.bg-mint {
+				background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+				border-left: 5px solid #17a2b8;
+			}
+
+			.bg-coral {
+				background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+				border-left: 5px solid #28a745;
+			}
+
+			/* 不同功能的颜色 */
+			.feature-security {
+				border-left: 4px solid #e74c3c;
+			}
+
+			.feature-config {
+				border-left: 4px solid #f39c12;
+			}
+
+			.feature-analysis {
+				border-left: 4px solid #27ae60;
+			}
+
+			.feature-gene {
+				border-left: 4px solid #8e44ad;
+			}
+
+			.feature-docker {
+				border-left: 4px solid #3498db;
+			}
+
+			.feature-calc {
+				border-left: 4px solid #e67e22;
+			}
+
+			.feature-performance {
+				border-left: 4px solid #1abc9c;
+			}
+
+			.feature-security-2 {
+				border-left: 4px solid #34495e;
+			}
+
+			.feature-docs {
+				border-left: 4px solid #9b59b6;
+			}
+
+			.feature-text-security {
+				color: #e74c3c;
+			}
+
+			.feature-text-config {
+				color: #f39c12;
+			}
+
+			.feature-text-analysis {
+				color: #27ae60;
+			}
+
+			.feature-text-gene {
+				color: #8e44ad;
+			}
+
+			.feature-text-docker {
+				color: #3498db;
+			}
+
+			.feature-text-calc {
+				color: #e67e22;
+			}
+
+			.feature-text-performance {
+				color: #1abc9c;
+			}
+
+			.feature-text-security-2 {
+				color: #34495e;
+			}
+
+			.feature-text-docs {
+				color: #9b59b6;
+			}
+
+			.title-orange {
+				color: #d35400;
+			}
+
+			.title-teal {
+				color: #16a085;
+			}
+
+			.title-purple {
+				color: #7d3c98;
+			}
+
+			.title-red {
+				color: #c0392b;
+			}
+
+			.title-green {
+				color: #229954;
+			}
+
+			.title-blue {
+				color: #2980b9;
+			}
+
+			.title-peach {
+				color: #d68910;
+			}
+
+			.title-light-blue {
+				color: #3498db;
+			}
+
+			.title-pink {
+				color: #ad1457;
+			}
+
+			.title-mint {
+				color: #138496;
+			}
+
+			.title-coral {
+				color: #1e7e34;
+			}
+		</style>
+		<!-- =======================================================
+  * Template Name: Vesperr
+  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
+  * Updated: Jun 29 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+	</head>
+
+	<body class="index-page">
+
+		<header id="header" class="header d-flex align-items-center sticky-top">
+			<div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+				<a class="logo d-flex align-items-center me-auto">
+					<img src="www/img/mr_logo.png">
+				</a>
+
+				<nav id="navmenu" class="navmenu">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li class="dropdown"><a href="#"><span>Mendelian Randomization</span> <i
+									class="bi bi-chevron-down toggle-dropdown"></i></a>
+							<ul>
+								<li><a href="analysis/2SMR-api/" target="_blank">Two-Sample Mendelian
+										Randomization (API)</a></li>
+								<li><a href="analysis/MVMR-api/" target="_blank">Multivariable Mendelian
+										Randomization (API)</a></li>
+								<li><a href="analysis/MMR-api/" target="_blank">Mediation Mendelian
+										Randomization (API)</a></li>
+								<li><a href="analysis/2SMR-local/" target="_blank">Two-Sample Mendelian
+										Randomization (Local)</a></li>
+								<li><a href="analysis/MVMR-local/" target="_blank">Multivariable Mendelian
+										Randomization (Local)</a></li>
+								<li><a href="analysis/MMR-local/" target="_blank">Mediation Mendelian
+										Randomization (Local)</a></li>
+							</ul>
+						</li>
+						<li class="dropdown"><a href="#"><span>Plugins</span> <i
+									class="bi bi-chevron-down toggle-dropdown"></i></a>
+							<ul>
+								<li><a href="plugins/OpenGWAS-JWT-update/" target="_blank">OpenGWAS-JWT-update</a></li>
+								<li><a href="plugins/COLOC/" target="_blank">Colocalization Analysis </a></li>
+								<li><a href="plugins/FORMAT/" target="_blank">GWAS Format</a></li>
+								<li><a href="plugins/CheckSumStats/" target="_blank">Check SumStats</a></li>
+								<li><a href="plugins/PowerCalculator/" target="_blank">Power Calculator</a></li>
+								<li><a href="plugins/SampleSizeCalculator/" target="_blank">Sample Size
+										Calculator</a></li>
+								<li><a href="plugins/MAGMA/" target="_blank">SNP Gene Mapping and Enrichment</a>
+								</li>
+								<li><a href="plugins/GO/" target="_blank">GO Enrichment Analysis</a>
+								</li>
+								<li><a href="plugins/KEGG/" target="_blank">KEGG Enrichment Analysis</a>
+								</li>
+								<li><a href="plugins/UEA/" target="_blank">Universal Enrichment Analysis</a>
+								</li>
+								<li><a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank">GWAS Data
+										Format
+										Standardization</a></li>
+								<li><a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank">RS ID
+										Conversion</a></li>
+								<li><a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank">VCF to TSV</a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown"><a href="#"><span>Data Visualization</span> <i
+									class="bi bi-chevron-down toggle-dropdown"></i></a>
+							<ul>
+								<li><a href="gallery/forest/" target="_blank">Forest Plot</a></li>
+								<li><a href="gallery/forest-mvmr/" target="_blank">Forest Plot (MVMR)</a></li>
+								<li><a href="gallery/dag-mmr/" target="_blank">DAG Plot (MMR)</a></li>
+								<li><a href="gallery/manhattan/" target="_blank">Manhattan Plot</a></li>
+								<li><a href="gallery/qq/" target="_blank">Q-Q Plot</a></li>
+								<li><a href="gallery/pie-chart/" target="_blank">Pie Chart</a></li>
+								<li><a href="gallery/venn-diagram/" target="_blank">Venn diagram</a></li>
+								<li><a href="gallery/go-circos-plot/" target="_blank">Crcos Plot (GO)</a></li>
+								<li><a href="gallery/go-dot-plot/" target="_blank">Dot Plot (GO)</a></li>
+								<li><a href="gallery/go-bar-plot/" target="_blank">Bar Plot (GO)</a></li>
+								<li><a href="gallery/go-bar-plot2/" target="_blank">Bar Plot2 (GO)</a></li>
+								<li><a href="gallery/kegg-circos-plot/" target="_blank">Crcos Plot (KEGG)</a></li>
+								<li><a href="gallery/kegg-bar-plot-hierarchy/" target="_blank">Bar Plot (KEGG)</a></li>
+								<li><a href="gallery/kegg-bar-plot2-hierarchy/" target="_blank">Bar Plot2 (KEGG)</a>
+								</li>
+							</ul>
+						</li>
+						<li><a href="Contact.html" target="_blank">Contact Us</a></li>
+					</ul>
+					<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+				</nav>
+			</div>
+		</header>
+
+		<main class="main">
+
+			<!-- Hero Section -->
+			<section id="hero" class="hero section">
+
+				<div class="container">
+					<div class="row gy-4">
+						<div class="col-lg-6 order-2 order-lg-1 d-flex flex-column">
+							<h1>Welcome to Mendelian Randomization Analysis</h1>
+							<p><strong>MRanalysis</strong> is an interactive R Shiny application designed for Mendelian
+								randomization analysis.</p>
+							<form class="form-inline" role="search" method="get">
+								<div class="input-group">
+									<input name="KeyWord" class="form-control" type="text" placeholder="Learn more...">
+									<div class="hidden-content">
+									</div>
+									<div class="input-group-append">
+										<button class="input-group-text" onclick="handleButtonClick(event)"><i
+												class="bi bi-search"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-lg-6 order-1 order-lg-2 hero-img">
+							<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+								<div class="carousel-indicators">
+									<button type="button" data-bs-target="#carouselExampleIndicators"
+										data-bs-slide-to="0" class="active" aria-current="true"
+										aria-label="Slide 1"></button>
+									<button type="button" data-bs-target="#carouselExampleIndicators"
+										data-bs-slide-to="1" aria-label="Slide 2"></button>
+									<button type="button" data-bs-target="#carouselExampleIndicators"
+										data-bs-slide-to="2" aria-label="Slide 3"></button>
+									<button type="button" data-bs-target="#carouselExampleIndicators"
+										data-bs-slide-to="3" aria-label="Slide 4"></button>
+									<button type="button" data-bs-target="#carouselExampleIndicators"
+										data-bs-slide-to="4" aria-label="Slide 5"></button>
+									<button type="button" data-bs-target="#carouselExampleIndicators"
+										data-bs-slide-to="5" aria-label="Slide 6"></button>
+									<button type="button" data-bs-target="#carouselExampleIndicators"
+										data-bs-slide-to="6" aria-label="Slide 7"></button>
+								</div>
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<img src="www/img/slider/1.png" class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img src="www/img/slider/2.png" class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img src="www/img/slider/3.png" class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img src="www/img/slider/4.png" class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img src="www/img/slider/5.png" class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img src="www/img/slider/6.png" class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img src="www/img/slider/7.png" class="d-block w-100" alt="...">
+									</div>
+								</div>
+								<button class="carousel-control-prev" type="button"
+									data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button"
+									data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- About Section -->
+			<section id="about" class="about section light-background">
+				<!-- Section Title -->
+				<div class="container section-title" data-aos="fade-up">
+					<h2>Introduction</h2>
+				</div><!-- End Section Title -->
+				<div class="container">
+					<div class="row gy-5">
+						<div class="content col-lg-12  d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
+							<p>
+								<strong> Mendelian randomization </strong> (MR) has emerged as a powerful
+								epidemiological method for inferring causal relationships between exposures and outcomes
+								using <strong> genome-wide association study </strong>
+								(GWAS) summary data. By leveraging instrumental variables (IVs),
+								such as single nucleotide polymorphisms (SNPs), MR can revolutionize
+								our understanding of disease etiology, inform public health strategies, and accelerate
+								drug discovery.
+							</p>
+							
+							<p> However, the widespread adoption of MR is hindered by several challenges, including
+								inconsistent GWAS data formats, lack of standardized workflows, the need for extensive
+								programming expertise, and limitations in data visualization and interpretability. To
+								address these challenges, we introduce <strong> MRanalysis </strong>, a comprehensive
+								and user-friendly,
+								web-based platform that provides the first integrated and standardized MR analysis
+								workflow. This includes GWAS data quality assessment, power/ sample size estimation, MR
+								analysis, SNP-to-gene enrichment analysis, and data visualization. <strong> Built using
+									the R
+									shiny framework, MRanalysis enables users to conduct common MR methods, including
+									univariable, multivariable, and mediation MR analyses through an intuitive, no-code
+									interface </strong>.</p>
+									
+							<div class="illustrate col-lg-12" data-aos="fade-up" data-aos-delay="200">
+								<img src="www/img/GRAPHICAL_ABSTRACT.png">
+							</div>
+							<br>
+							
+							<p> Besides MRanalysis, we developed <strong> GWASkit </strong>, a standalone, and
+								installation-free tool
+								facilitating rapid GWAS dataset preprocessing before MR analyses, including rs ID
+								conversion, format standardization, and data extraction, with significantly lower
+								conversion time and dramatically higher rs ID conversion accuracy than the current
+								tools. Case studies demonstrate the utility, efficiency, and ease of use of our
+								developed platform and GWASkit tool in real-world scenarios. By lowering barriers to
+								investigating causal genetic relationships, our platform represents a significant
+								advance in making MR more accessible, reliable, and efficient. The increased adoption of
+								MR, facilitated by MRanalysis and GWASkit, can accelerate discoveries in genetic
+								epidemiology, strengthen evidence-based public health strategies, and guide the
+								development of targeted clinical interventions.</p>
+						</div>
+
+					</div>
+
+				</div>
+			</section><!-- /About Section -->
+
+			<!-- Changelog Section -->
+			<section id="changelog" class="changelog section light-background">
+				<!-- Section Title -->
+				<div class="container section-title" data-aos="fade-up">
+					<div class="section-title changelog-toggle" onclick="toggleChangelog()">
+						<h2 class="changelog-title">📋 Changelog</h2>
+						<i class="bi bi-chevron-down"></i>
+					</div>
+					<p>Latest updates and changes to MRanalysis</p>
+				</div><!-- End Section Title -->
+				<div class="container changelog-container" data-aos="fade-up" data-aos-delay="100">
+					<div class="row gy-4">
+						<div class="col-lg-12">
+							<ul class="changelog-list">
+								<li class="version-major">
+									<h4 class="version-title-major"><span class="version-icon">🚀</span>Version 2.0.0 -
+										August 15, 2025</h4>
+									<ul class="feature-list">
+										<li class="feature-item feature-docker">
+											<strong class="feature-text-docker">🚢 Docker image & one-click
+												deployment:</strong>
+											<span class="version-text">Released official Docker image for easy local
+												deployment, enabling users to leverage local computing resources for
+												large-scale analysis.</span>
+										</li>
+										<li class="feature-item feature-security">
+											<strong class="feature-text-security">🔐 OpenGWAS JWT validation &
+												update:</strong>
+											<span class="version-text">Added token validity check and manual update
+												module for seamless OpenGWAS API connection.</span>
+										</li>
+										<li class="feature-item feature-config">
+											<strong class="feature-text-config">⚙️ Flexible IV significance
+												threshold:</strong>
+											<span class="version-text">Users can now set custom P-value thresholds for
+												instrumental variable selection.</span>
+										</li>
+										<li class="feature-item feature-analysis">
+											<strong class="feature-text-analysis">🔬 Colocalization analysis:</strong>
+											<span class="version-text">Integrated COLOC.ABF, COLOC.SUSIE, COLOC.PWCoCo,
+												and COLOC.eCAVIAR for robust post-MR validation.</span>
+										</li>
+										<li class="feature-item feature-gene">
+											<strong class="feature-text-gene">🧬 Gene annotation enhanced:</strong>
+											<span class="version-text">Gene symbols and functional/disease annotations
+												are now displayed for easier biological interpretation.</span>
+										</li>
+										<li class="feature-item feature-docker">
+											<strong class="feature-text-docker">🐳 Large-scale GWAS support:</strong>
+											<span class="version-text">Provided Docker image and local deployment guide
+												for handling large datasets; new GWAS format conversion tools
+												added.</span>
+										</li>
+										<li class="feature-item feature-calc">
+											<strong class="feature-text-calc">📊 Sample size & power
+												calculation:</strong>
+											<span class="version-text">Upgraded calculators with demonstration cases for
+												all three MR analysis types.</span>
+										</li>
+										<li class="feature-item feature-performance">
+											<strong class="feature-text-performance">⚡ Performance
+												improvements:</strong>
+											<span class="version-text">Multivariable MR computation speed increased
+												~10x; supports local analysis for faster processing.</span>
+										</li>
+										<li class="feature-item feature-security-2">
+											<strong class="feature-text-security-2">🛡️ Security &
+												accessibility:</strong>
+											<span class="version-text">Upgraded SSL certificate and open-sourced the
+												platform for secure, transparent, and local use.</span>
+										</li>
+										<li class="feature-item feature-docs">
+											<strong class="feature-text-docs">📚 Limitation & interpretation
+												guidance:</strong>
+											<span class="version-text">Added pages on MR limitations, proper use, and
+												interpretation of results, including 2-sample MR caveats.</span>
+										</li>
+									</ul>
+								</li>
+								<li class="version-minor bg-orange">
+									<h4 class="version-title title-orange"><span class="version-icon">💬</span>Version
+										1.8.0 - April 29, 2025</h4>
+									<p class="version-text">Integrated a lightweight comments widget using Utterances.
+										Feel free to leave any questions or suggestions in the comments section!</p>
+								</li>
+								<li class="version-minor bg-teal">
+									<h4 class="version-title title-teal"><span class="version-icon">🔧</span>Version
+										1.7.0 - April 15, 2025</h4>
+									<p class="version-text">Added MR-RAPS method for robust Mendelian Randomization
+										analysis.</p>
+								</li>
+								<li class="version-minor bg-purple">
+									<h4 class="version-title title-purple"><span class="version-icon">📊</span>Version
+										1.6.0 - April 05, 2025</h4>
+									<p class="version-text">Added support for new visualization tools: Circos Plot (GO)
+										and Bar Plot2 (KEGG).</p>
+								</li>
+								<li class="version-minor bg-pink">
+									<h4 class="version-title title-red"><span class="version-icon">🐛</span>Version
+										1.5.2 - March 30, 2025</h4>
+									<p class="version-text">Fixed bug in Manhattan plot rendering for large datasets.
+										Improved performance by 30%.</p>
+								</li>
+								<li class="version-minor bg-yellow">
+									<h4 class="version-title title-green"><span class="version-icon">📤</span>Version
+										1.5.1 - March 20, 2025</h4>
+									<p class="version-text">Enhanced data export capabilities with additional file
+										format options and customization settings.</p>
+								</li>
+								<li class="version-minor bg-blue">
+									<h4 class="version-title title-blue"><span class="version-icon">🎨</span>Version
+										1.5.0 - July 26, 2024</h4>
+									<p class="version-text">Major update to the website's styles.</p>
+								</li>
+								<li class="version-minor bg-peach">
+									<h4 class="version-title title-peach"><span class="version-icon">📈</span>Version
+										1.4.0 - June 12, 2024</h4>
+									<p class="version-text">Add module: Add a data visualization module.</p>
+								</li>
+								<li class="version-minor bg-light-blue">
+									<h4 class="version-title title-light-blue"><span
+											class="version-icon">🔌</span>Version 1.3.0 - January 05, 2024</h4>
+									<p class="version-text">Add plugins: Developed a local plugin tool (GWASkit) for
+										large files.</p>
+								</li>
+								<li class="version-minor bg-gradient-pink">
+									<h4 class="version-title title-pink"><span class="version-icon">🔧</span>Version
+										1.2.0 - February 22, 2024</h4>
+									<p class="version-text">Add plugins: Complete the development of the plugin module.
+									</p>
+								</li>
+								<li class="version-minor bg-mint">
+									<h4 class="version-title title-mint"><span class="version-icon">🧪</span>Version
+										1.1.0 - December 25, 2023</h4>
+									<p class="version-text">Analysis Module: Complete the development of the Mendelian
+										analysis module.</p>
+								</li>
+								<li class="version-minor bg-coral">
+									<h4 class="version-title title-coral"><span class="version-icon">🎉</span>Version
+										1.0.0 - December 13, 2023</h4>
+									<p class="version-text">MRanalysis online, simplifying Mendelian analysis.</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section><!-- End Changelog Section -->
+
+
+
+			<!--div class="upinfo" data-aos="fade-up">
+	
+					<div class="upinfo" data-aos="fade-up">
+						<div class="upinfo-item">
+							<h4>Update styles</h4>
+							<h5>2024.07.26</h5>
+							<p></p>
+						</div><-- Edn Resume Item >
+					</div-->
+
+
+			<!-- ======= Portfolio Section ======= -->
+			<section id="portfolio" class="portfolio">
+				<div class="container" data-aos="fade-up">
+
+					<div class="section-title">
+						<h2>Quick Links</h2>
+						<p>Doing MR analysis and visualization without coding expertise.</p>
+					</div>
+
+					<div class="row" data-aos="fade-up" data-aos-delay="100">
+						<div class="col-lg-12 d-flex justify-content-center">
+							<ul id="portfolio-flters">
+								<li data-filter="*" class="filter-active">All</li>
+								<li data-filter=".filter-API">MR (API)</li>
+								<li data-filter=".filter-Local">MR (Local)</li>
+								<li data-filter=".filter-Plugin">Plugins</li>
+								<li data-filter=".filter-GWASkit">Plugins (GWASkit)</li>
+								<li data-filter=".filter-Visualization">Data Visualization</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-API">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/2SMR_api.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Two sample Mendelian randomization</h4>
+									<p>Two sample Mendelian randomization (2SMR) is a method to estimate the causal
+										effect of an exposure on an outcome using only summary statistics from genome
+										wide association studies (GWAS).</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/2SMR_api.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox"
+											title="Two sample Mendelian randomization (API)"><i
+												class="bx bx-plus"></i></a>
+										<a href="analysis/2SMR-api" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-API">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/MVMR_api.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Multivariable Mendelian Randomization</h4>
+									<p>Multivariable Mendelian Randomisation (MVMR) is a form of instrumental variable
+										analysis which estimates the direct effect of multiple exposures on an outcome
+										using genetic variants as instruments.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/MVMR_api.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox"
+											title="Multivariable Mendelian Randomization (API)"><i
+												class="bx bx-plus"></i></a>
+										<a href="analysis/MVMR-api" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-API">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/MMR_api.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Mediation Mendelian Randomization</h4>
+									<p>Mediation analysis seeks to explain the pathway(s) through which an exposure
+										affects an outcome.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/MMR_api.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox"
+											title="Two-step or Mediation Mendelian Randomization (API)"><i
+												class="bx bx-plus"></i></a>
+										<a href="analysis/MMR-api" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Local">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/2SMR_local.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Two sample Mendelian randomization</h4>
+									<p>Two sample Mendelian randomization (2SMR) is a method to estimate the causal
+										effect of an exposure on an outcome using only summary statistics from genome
+										wide association studies (GWAS).</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/2SMR_local.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox"
+											title="Two sample Mendelian randomization (local)"><i
+												class="bx bx-plus"></i></a>
+										<a href="analysis/2SMR-local" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Local">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/MVMR_local.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Multivariable Mendelian Randomization</h4>
+									<p>Multivariable Mendelian Randomisation (MVMR) is a form of instrumental variable
+										analysis which estimates the direct effect of multiple exposures on an outcome
+										using genetic variants as instruments.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/MVMR_local.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox"
+											title="Multivariable Mendelian Randomization (local)"><i
+												class="bx bx-plus"></i></a>
+										<a href="analysis/MVMR-local" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Local">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/MMR_local.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Mediation Mendelian Randomization</h4>
+									<p>Mediation analysis seeks to explain the pathway(s) through which an exposure
+										affects an outcome.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/MMR_local.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox"
+											title="Two-step or Mediation Mendelian Randomization (local)"><i
+												class="bx bx-plus"></i></a>
+										<a href="analysis/MMR-local" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/CheckSumStats.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>CheckSumStats</h4>
+									<p>This application for the identification of errors and analytical issues in the
+										results
+										and metadata of genome-wide association studies (GWAS).</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/CheckSumStats.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="CheckSumStats"><i
+												class="bx bx-plus"></i></a>
+										<a href="plugins/CheckSumStats" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/PowerCalculator.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Power Calculator</h4>
+									<p>This plugin is used to calculate statistical power in Mendelian randomization
+										studies.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/PowerCalculator.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Power Calculator"><i
+												class="bx bx-plus"></i></a>
+										<a href="plugins/PowerCalculator" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/SampleSizeCalculator.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Sample Size Calculator</h4>
+									<p>This statistical calculator determines the minimum sample size required for
+										adequate
+										statistical power in a study by applying various equations.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/SampleSizeCalculator.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Sample Size Calculator"><i
+												class="bx bx-plus"></i></a>
+										<a href="plugins/SampleSizeCalculator" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/MAGMA.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>SNP gene mapping and enrichment</h4>
+									<p>This plugin uses MAGMA for SNP gene mapping and enrichment analysis and gene set
+										evaluations.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/MAGMA.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="SNP gene mapping and enrichment"><i
+												class="bx bx-plus"></i></a>
+										<a href="plugins/MAGMA" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/go.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>GO enrichment analysis</h4>
+									<p>Gene Ontology (GO) term enrichment is a technique for interpreting sets of genes
+										making use of the Gene Ontology system of classification, in which genes are
+										assigned to a set of predefined bins depending on their functional
+										characteristics.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/go.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="GO enrichment analysis"><i
+												class="bx bx-plus"></i></a>
+										<a href="plugins/GO" target="_blank" title="Click here for this application."><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/KEGG.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>KEGG enrichment analysis</h4>
+									<p>KEGG (Kyoto Encyclopedia of Genes and Genomes) enrichment analysis is a popular
+										bioinformatics method used to identify biological pathways that are
+										significantly enriched in a set of genes or proteins.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/KEGG.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="KEGG enrichment analysis"><i
+												class="bx bx-plus"></i></a>
+										<a href="plugins/KEGG" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/uea.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Universal Enrichment Analysis</h4>
+									<p>A universal enrichment analyzer</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/uea.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Universal Enrichment Analysis"><i
+												class="bx bx-plus"></i></a>
+										<a href="plugins/UEA" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin filter-GWASkit">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/tsv2vcf.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>GWAS Data Format Standardization</h4>
+									<p>The plugin provides a tool for standard format conversion of GWAS summary data,
+										ensuring
+										that data from different GWAS databases can be used for MR analysis on this
+										platform.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/tsv2vcf.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="GWAS Data Format Standardization"><i
+												class="bx bx-plus"></i></a>
+										<a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin filter-GWASkit">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/IDconversion.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>rs ID Conversion</h4>
+									<p>This plugin can match corresponding SNP IDs based on CHR, POS, REF, and ALT.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/IDconversion.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="rs ID Conversion"><i
+												class="bx bx-plus"></i></a>
+										<a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Plugin filter-GWASkit">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/vcf2tsv.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>VCF to TSV</h4>
+									<p>This plugin can convert VCF format to TSV format and extract specified
+										information.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/vcf2tsv.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="VCF to TSV"><i class="bx bx-plus"></i></a>
+										<a href="https://github.com/Li-OmicsLab-MPU/GWASkit" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/forest.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Forest Plot</h4>
+									<p>Forest plots illustrate study relationships, consistency, precision, and
+										heterogeneity in meta-analysis results.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/forest.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Forest Plot"><i
+												class="bx bx-plus"></i></a>
+										<a href="gallery/forest" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/forest-mvmr.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Forest Plot (MVMR)</h4>
+									<p>Forest plots illustrate study relationships, consistency, precision, and
+										heterogeneity in meta-analysis results.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/forest-mvmr.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title=" (MVMR)"><i class="bx bx-plus"></i></a>
+										<a href="gallery/forest-mvmr" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/manhattan.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Manhattan Plot</h4>
+									<p>A Manhattan plot in GWAS displays numerous significant SNPs with varying
+										magnitudes for identifying genetic associations.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/manhattan.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Manhattan Plot"><i
+												class="bx bx-plus"></i></a>
+										<a href="gallery/manhattan" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/qq.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Q-Q Plot</h4>
+									<p>In statistics, a Q–Q plot (quantile–quantile plot) is a probability plot, a
+										graphical method for comparing two probability distributions by plotting their
+										quantiles against each other.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/qq.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Q-Q Plot"><i class="bx bx-plus"></i></a>
+										<a href="gallery/qq" target="_blank" title="Click here for this application."><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/pie-chart.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Pie Chart</h4>
+									<p>A piechart is a circle divided into sectors that each represent a proportion of
+										the whole.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/pie-chart.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Pie Chart"><i class="bx bx-plus"></i></a>
+										<a href="gallery/pie-chart" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/venn-diagram.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Venn Diagram</h4>
+									<p>A Venn diagram is an illustration that uses overlapping circles to show the
+										logical relationship between two or more sets of items.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/venn-diagram.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Venn Diagram"><i
+												class="bx bx-plus"></i></a>
+										<a href="gallery/venn-diagram" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/go-circos-plot.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Circos Plot (GO)</h4>
+									<p>The Circos plot representation of GO-Annotation terms of genes in a) Biological
+										Process b) Cellular Components c) Molecular Function.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/go-circos-plot.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Circos Plot (GO)"><i
+												class="bx bx-plus"></i></a>
+										<a href="gallery/go-circos-plot" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/go-dot-plot.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Dot Plot (GO)</h4>
+									<p>The Dot plot representation of GO-Annotation terms of genes in a) Biological
+										Process b) Cellular Components c) Molecular Function.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/go-dot-plot.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Dot Plot (GO)"><i
+												class="bx bx-plus"></i></a>
+										<a href="gallery/go-dot-plot" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/go-bar-plot.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Bar Plot (GO)</h4>
+									<p>The Bar plot representation of GO-Annotation terms of genes in a) Biological
+										Process b) Cellular Components c) Molecular Function.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/go-bar-plot.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Bar Plot (GO)"><i
+												class="bx bx-plus"></i></a>
+										<a href="gallery/go-bar-plot" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/go-bar-plot2.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Bar Plot (GO)</h4>
+									<p>The Bar plot representation of GO-Annotation terms of genes in a) Biological
+										Process b) Cellular Components c) Molecular Function.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/go-bar-plot2.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Bar Plot (GO)"><i
+												class="bx bx-plus"></i></a>
+										<a href="gallery/go-bar-plot2" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/dag-plot.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									CircosG Plot</h4>
+									CircosG plot in mediation analysis refers to a Directed Acyclic Graph (DAG), which
+									is used to visually represent causal relationships between variables.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/dag-plot.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" tCircosG Plot"><i class="bx bx-plus"></i></a>
+										<a href="gallery/dag-mmr" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/kegg-circos-plot.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Circos Plot (KEGG)</h4>
+									<p>A Circos plot is a circular visualization tool often used to display complex
+										relationships in genomic data, including KEGG pathway interactions.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/kegg-circos-plot.png" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Circos Plot (KEGG)"><i
+												class="bx bx-plus"></i></a>
+										<a href="gallery/kegg-circos-plot" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/kegg-bar-plot-hierarchy.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Bar Plot (KEGG)</h4>
+									<p>A bar plot in the context of KEGG (Kyoto Encyclopedia of Genes and Genomes) is a
+										graphical representation used to display quantitative data related to pathways,
+										such as gene expression levels or pathway enrichment scores.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/kegg-bar-plot-hierarchy.png"
+											data-gallery="portfolioGallery" class="portfolio-lightbox"
+											title="Bar Plot (KEGG)"><i class="bx bx-plus"></i></a>
+										<a href="gallery/kegg-bar-plot-hierarchy" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-Visualization">
+							<div class="portfolio-wrap">
+								<img src="www/img/quick/kegg-bar-plot2-hierarchy.png" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Bar Plot (KEGG)</h4>
+									<p>A bar plot in the context of KEGG (Kyoto Encyclopedia of Genes and Genomes) is a
+										graphical representation used to display quantitative data related to pathways,
+										such as gene expression levels or pathway enrichment scores.</p>
+									<div class="portfolio-links">
+										<a href="www/img/quick/kegg-bar-plot2-hierarchy.png"
+											data-gallery="portfolioGallery" class="portfolio-lightbox"
+											title="Bar Plot (KEGG)"><i class="bx bx-plus"></i></a>
+										<a href="gallery/kegg-bar-plot2-hierarchy" target="_blank"
+											title="Click here for this application."><i class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section><!-- End Portfolio Section -->
+
+
+			<!-- Contact Section -->
+			<section id="contact" class="section">
+
+				<!-- Section Title -->
+				<div class="container section-title " data-aos="fade-up">
+					<h2>Feel free to comment</h2>
+				</div><!-- End Section Title -->
+
+				<div class="container position-relative" style="text-align: center;" data-aos="fade-up"
+					data-aos-delay="100">
+					<a href="mailto:kefengl@mpu.edu.mo"><strong>kefengl@mpu.edu.mo</strong></a>
+					<div class="row gy-4">
+
+						<!--div class="col-lg-5 d-flex flex-column gap-3 justify-content-center">
+							<div class="onlineanalysis">
+								<script type="text/javascript"
+									src="//rf.revolvermaps.com/0/0/1.js?i=5r6p4fkkr91&amp;s=350&amp;m=0&amp;v=false&amp;r=false&amp;b=ffffff&amp;n=false&amp;c=ff0000"
+									async="async"></script>
+							</div>
+							<div class="onlineanalysis">
+								<script type="text/javascript"
+									src="//rf.revolvermaps.com/0/0/0.js?i=51juh9mcj5r&amp;d=3&amp;p=0&amp;b=0&amp;w=293&amp;g=2&amp;f=arial&amp;fs=12&amp;r=0&amp;c0=362b05&amp;c1=375363&amp;c2=000000&amp;ic0=0&amp;ic1=0"
+									async="async"></script>
+							</div>
+						</div-->
+						<br>
+						<br>
+						<div class="col-lg-12 contact">
+							<script src="https://utteranc.es/client.js" repo="xingabao/MRanalysis" issue-term="homepage"
+								crossorigin="anonymous" theme="github-light" async></script>
+						</div>
+					</div>
+				</div>
+			</section><!-- /Contact Section -->
+
+		</main>
+
+		<footer id="footer" class="footer">
+			<div class="footer-links d-flex flex-row">
+				<div class="col-lg-4 links-content">
+					<a href="https://github.com/Li-OmicsLab-MPU" target="_blank">
+						<p>Li-OmincsLab GitHub</p>
+					</a>
+					<a href="https://www.mpu.edu.mo/esca/en/aidd.php" target="_blank">
+						<p>Centre for Artificial Intelligence Driven Drug Discovery (AIDD)</p>
+					</a>
+					<a href="https://www.mpu.edu.mo/en/index.php" target="_blank">
+						<p>Macao Polytechnic University (MPU)</p>
+					</a>
+				</div>
+				<div class="col-lg-4 links-content">
+					<a href="https://pheweb.jp/" target="_blank">
+						<p>Pheweb</p>
+					</a>
+					<a href="https://www.ebi.ac.uk/gwas/" target="_blank">
+						<p>Gwas Catalog</p>
+					</a>
+					<a href="https://gwas.mrcieu.ac.uk/" target="_blank">
+						<p>IEU OpenGWAS project</p>
+					</a>
+					<a href="https://www.finngen.fi/en" target="_blank">
+						<p>FinnGen: an expedition into genomics and medicine</p>
+					</a>
+				</div>
+				<div class="col-lg-4 links-wechat d-flex flex-column justify-content-center">
+					<img src="www/img/wechat.jpg">
+					<p>Welcome to Focus on Our Lab News</p>
+				</div>
+			</div>
+			<div class="container">
+				<div class="copyright text-center">
+					<p>© <span>Copyright</span> <strong class="px-1 sitename">2023-2025</strong> <span>All Rights
+							Reserved</span></p>
+				</div>
+				<div class="credits">
+					<a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备19092212号</a>
+				</div>
+			</div>
+
+		</footer>
+
+		<!-- Scroll Top -->
+		<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+				class="bi bi-arrow-up-short"></i></a>
+
+		<!-- Preloader -->
+		<div id="preloader"></div>
+
+		<!-- Vendor JS Files -->
+		<script src="www/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="www/vendor/php-email-form/validate.js"></script>
+		<script src="www/vendor/aos/aos.js"></script>
+		<script src="www/vendor/glightbox/js/glightbox.min.js"></script>
+		<script src="www/vendor/purecounter/purecounter_vanilla.js"></script>
+		<script src="www/vendor/swiper/swiper-bundle.min.js"></script>
+		<script src="www/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+		<script src="www/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+		<!-- Main JS File -->
+		<script src="www/js/main.js"></script>
+
+		<!-- Custom JS for Changelog Toggle -->
+		<script>
+			function toggleChangelog() {
+				const list = document.querySelector('.changelog-list');
+				const toggle = document.querySelector('.changelog-toggle');
+				list.classList.toggle('active');
+				toggle.classList.toggle('active');
+			}
+		</script>
+	</body>
+</html>
