@@ -25,10 +25,7 @@ RUN Rscript -e 'remotes::install_version("RcppEigen", version = "0.3.3.9.3")' \
 	&& Rscript -e 'devtools::install_github("mrcieu/gwasglue")' \
 	&& Rscript -e 'devtools::install_github("WSpiller/MVMR", build_opts = c("--no-resave-data", "--no-manual"), build_vignettes = FALSE)' \
 	&& Rscript -e 'devtools::install_github("jrs95/geni.plots", build_vignettes = FALSE)' \
-	&& Rscript -e 'devtools::install_github("boxiangliu/locuscomparer")' \
-	&& Rscript -e 'remotes::install_version("RcppEigen", version = "0.3.3.9.3")' \
-	&& Rscript -e 'remotes::install_github("xingabao/MRanalysisBase")' \
-	&& Rscript -e 'remotes::install_github("xingabao/GWASkitR")'
+	&& Rscript -e 'devtools::install_github("boxiangliu/locuscomparer")'
 
 # Install PWCoCo
 RUN mkdir -p /tools && cd /tools \
@@ -63,8 +60,11 @@ RUN wget -O /tmp/magma_v1.10.zip https://vu.data.surfsara.nl/index.php/s/zkKbNeN
 	&& unzip /tmp/magma_v1.10.zip -d /tools/magma_v1.10 \
 	&& chmod 777 /tools/magma_v1.10/magma
 
-
-# 中间文件删除
+# Install R packages for MRanalysis
+RUN Rscript -e 'remotes::install_github("xingabao/MRanalysisBase")' \
+	&& Rscript -e 'remotes::install_github("xingabao/GWASkitR")'
+	
+# Delete temp files
 RUN rm -rf /tmp/* /srv/shiny-server* 
 
 # Copy
