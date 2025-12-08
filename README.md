@@ -368,3 +368,6 @@ You can upload your own preprocessed data or use built-in API mode to select pub
 - **Online platform:** [https://mranalysis.cn](https://mranalysis.cn)
 - **GWASkit tool & documentation:** [https://github.com/Li-OmicsLab-MPU/GWASkit](https://github.com/Li-OmicsLab-MPU/GWASkit)
 
+# Citation
+
+Abao Xing, Tiantian Cai, Haofan Du, Zhifan Li, Hoiman Ng, Junrong Li, Guanmin Jiang, Lijun Chen, Kefeng Li, MRanalysis: a comprehensive online platform for integrated, multimethod Mendelian randomization and associated post-GWAS analyses, *GigaScience*, Volume 14, 2025, giaf131, https://doi.org/10.1093/gigascience/giaf131

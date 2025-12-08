@@ -25,6 +25,8 @@ shiny::addResourcePath(
 
 options(shiny.maxRequestSize = tryCatch(if (Sys.getenv("MRANALYSIS_MAX_SIZE") == '') 100000 * 1024^2 else eval(parse(text = Sys.getenv("MRANALYSIS_MAX_SIZE"))), error = function(e) 100000 * 1024^2))
 
+BCFTOOLS <- '/tools/bcftools-1.22/bcftools'
+
 # ui
 ui.analysis.mr_mvmr_local <- function() {
   
